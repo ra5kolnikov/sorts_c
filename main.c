@@ -6,15 +6,15 @@ void my_sort(int *arr, int *cnt, int sort);
 int main() {
     int n = 0;
     int sort = 0;
-    printf("Введите размерность массива:\n");
+    printf("Enter the size of the array:\n");
     scanf("%d", &n);
-    printf("Введите элементы массива через пробел:\n");
+    printf("Enter array elements separated by a space:\n");
     int arr[n];
     input(arr, &n);
-    printf("Выберите вариант сортировки: \n\
-    1. Сортировка пузырьком O(N^2)\n\
-    2. Быстрая сортировка O(Nlog(N))\n\
-    3. Пирамидальная сортировка O(Nlog(N))\n");
+    printf("Select a sort option: \n\
+    1. Bubble sort O(N^2)\n\
+    2. Quick sort O(Nlog(N))\n\
+    3. MaxHeap sort O(Nlog(N))\n");
     scanf("%d", &sort);
     my_sort(arr, &n, sort);
     return 0;
