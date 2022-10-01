@@ -9,9 +9,11 @@ void input(int *arr, int *n) {
 
 void output(int *arr, int *n) {
     for (int i = 0; i < *n; i++) {
-        printf("%d ", arr[i]);
+        printf("%d", arr[i]);
+        if (i != *n - 1) {
+            printf(" ");
+        }
     }
-    printf("\n");
 }
 
 void bubble_sort(int *arr, int count) {
