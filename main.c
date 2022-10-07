@@ -11,11 +11,12 @@ int main() {
     printf("Enter array elements separated by a space:\n");
     int arr[n];
     input(arr, &n);
-    printf("Select a sort option: \n\
+    printf("Select a sort option:\n\
     1. Bubble sort O(N^2)\n\
     2. Quick sort O(Nlog(N))\n\
     3. MaxHeap sort O(Nlog(N))\n\
-    4. Selection sort O(N^2)\n");
+    4. Selection sort O(N^2)\n\
+    5. Insertion sort O(N^2)\n");
     scanf("%d", &sort);
     my_sort(arr, &n, sort);
     return 0;
@@ -39,8 +40,12 @@ void my_sort(int *arr, int *cnt, int sort) {
         selection_sort(arr, cnt);
         output(arr, cnt);
         break;
+    case 5: 
+        insertion_sort(arr, cnt);
+        output(arr, cnt);
+        break;
     default:
-        printf("Введите значение от 1 до 3");
+        printf("Введите значение от 1 до 5");
         break;
     }
 }

@@ -38,6 +38,21 @@ void selection_sort(int *arr, int *count) {
     }
 }
 
+void insertion_sort(int *arr, int *count) {
+    int newElement, location;
+ 
+    for (int i = 1; i < *count; i++) {
+        newElement = arr[i];
+        location = i - 1;
+        while(location >= 0 && arr[location] > newElement)
+        {
+            arr[location+1] = arr[location];
+            location = location - 1;
+        }
+        arr[location+1] = newElement;
+    }
+}
+
 void quick_sort(int *arr, int size) {
     int left = 0;
     int right = size - 1;

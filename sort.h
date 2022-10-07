@@ -10,5 +10,6 @@ void pyramid_sort(int *arr, int count, int first);
 void heapSort(int *arr, int *cnt);
 void heapify(int *arr, int count, int root);
 void selection_sort(int *arr, int *count);
+void insertion_sort(int *arr, int *count);
 
 #endif // _SORT_H_
