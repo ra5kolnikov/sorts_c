@@ -46,10 +46,10 @@ void insertion_sort(int *arr, int *count) {
         location = i - 1;
         while(location >= 0 && arr[location] > newElement)
         {
-            arr[location+1] = arr[location];
+            arr[location + 1] = arr[location];
             location = location - 1;
         }
-        arr[location+1] = newElement;
+        arr[location + 1] = newElement;
     }
 }
 
