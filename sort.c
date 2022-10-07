@@ -26,6 +26,18 @@ void bubble_sort(int *arr, int count) {
     }
 }
 
+void selection_sort(int *arr, int *count) {
+    int min = 0;
+    for (int i = 0; i < *count - 1; i++) {
+        min = i;
+        for (int j = i + 1; j < *count; j++) 
+            if(arr[j] < arr[min]) {
+                min = j;
+            }
+        swap(arr, i, min);
+    }
+}
+
 void quick_sort(int *arr, int size) {
     int left = 0;
     int right = size - 1;

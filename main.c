@@ -14,7 +14,8 @@ int main() {
     printf("Select a sort option: \n\
     1. Bubble sort O(N^2)\n\
     2. Quick sort O(Nlog(N))\n\
-    3. MaxHeap sort O(Nlog(N))\n");
+    3. MaxHeap sort O(Nlog(N))\n\
+    4. Selection sort O(N^2)\n");
     scanf("%d", &sort);
     my_sort(arr, &n, sort);
     return 0;
@@ -32,6 +33,10 @@ void my_sort(int *arr, int *cnt, int sort) {
         break;
     case 3: 
         heapSort(arr, cnt);
+        output(arr, cnt);
+        break;
+    case 4: 
+        selection_sort(arr, cnt);
         output(arr, cnt);
         break;
     default:
