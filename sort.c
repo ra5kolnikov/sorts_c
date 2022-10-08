@@ -16,14 +16,19 @@ void output(int *arr, int *n) {
     }
 }
 
-void bubble_sort(int *arr, int count) {
-    for (int i = 0; i < count - 1 ; i++) {
-        for (int j = (count - 1); j > i; j--) {
-            if(arr[i] > arr[j]) {
+void bubble_sort(int *arr, int *count) {
+    int counter = 0;
+    int j = 0;
+    do {
+        counter = 0;
+        for (int i = 0; i < *count; i++) {
+            j = i + 1;
+            if (arr[i] > arr[j]) {
                 swap(arr, i, j);
+                counter++;
             }
         }
-    }
+    } while (counter > 0);
 }
 
 void selection_sort(int *arr, int *count) {
@@ -34,7 +39,9 @@ void selection_sort(int *arr, int *count) {
             if(arr[j] < arr[min]) {
                 min = j;
             }
-        swap(arr, i, min);
+        if (min != i) {
+            swap(arr, i, min);
+        }
     }
 }
 
@@ -44,8 +51,7 @@ void insertion_sort(int *arr, int *count) {
     for (int i = 1; i < *count; i++) {
         newElement = arr[i];
         location = i - 1;
-        while(location >= 0 && arr[location] > newElement)
-        {
+        while(location >= 0 && arr[location] > newElement) {
             arr[location + 1] = arr[location];
             location = location - 1;
         }
@@ -53,10 +59,10 @@ void insertion_sort(int *arr, int *count) {
     }
 }
 
-void quick_sort(int *arr, int size) {
+void quick_sort(int *arr, int *size) {
     int left = 0;
-    int right = size - 1;
-    int mid = arr[size / 2];
+    int right = *size - 1;
+    int mid = arr[*size / 2];
     while (left <= right) {
         while (arr[left] < mid) {
             left++;
@@ -71,9 +77,9 @@ void quick_sort(int *arr, int size) {
         }
     }
     if (right > 0) {
-        quick_sort(arr, right + 1);
+        quick_sort(arr, &right + 1);
     }
-    if (left < size) {
+    if (left < *size) {
         quick_sort(&arr[left], size - left);
     }
 }
@@ -112,5 +118,48 @@ void heapSort(int *arr, int *cnt) {
     for (int i = *cnt - 1; i >= 0; i--) {
         swap(arr, 0, i);
         heapify(arr, i, 0);
+    }
+}
+
+void merge_sort(int *arr, int start, int *end) {
+    if (*end > start){
+        int midle = (start + *end)/2;
+        merge_sort(arr, start, &midle);
+        merge_sort(arr, midle + 1,end);
+        merge(arr, start, midle, midle + 1, *end);
+    }
+}
+
+void merge(int *arr, int start, int midLeft, int midRight, int end) {
+    int newArray[end - start + 1];
+    int i = start;
+    int j = midRight;
+    int z = 0;
+    int n = end - start + 1;
+    while (z < n) {
+        if (arr[i] <= arr[j] && i <= midLeft && j <= end) {
+            newArray[z] = arr[i];
+            z++;
+            i++;
+        }
+        if (arr[j] <= arr[i] && i <= midLeft && j <= end) {
+            newArray[z] = arr[j];
+            z++;
+            j++;
+        }
+        if (i > midLeft && j <= end) {
+            newArray[z] = arr[j];
+            z++;
+            j++;
+        }
+        if (j > end && i <= midLeft) {
+            newArray[z] = arr[i];
+            z++;
+            i++;
+        }
+    }
+
+    for (int i = 0, j = start; j <= end; i++, j++) {
+        arr[j] = newArray[i];
     }
 }
